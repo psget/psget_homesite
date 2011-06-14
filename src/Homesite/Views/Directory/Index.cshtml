@@ -1,0 +1,17 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "Directory Index";
+}
+
+<h2>Directory Index</h2>
+
+<dl>
+@foreach (var m in Model.Modules) { 
+
+	<dt>@m.Id</dt>
+	<dd>
+		<p>@m.Title</p>
+		<pre><code>@m.PsGetCommandLine</code></pre>		
+	</dd>
+}
+</dl>
