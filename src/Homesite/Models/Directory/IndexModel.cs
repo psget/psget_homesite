@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Homesite.Application.Providers.DirectoryProvider;
+using Homesite.App.Providers.DirectoryProvider;
 
 namespace Homesite.Models.Directory
 {
