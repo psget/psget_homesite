@@ -1,11 +1,12 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel.Syndication;
 using System.Xml;
 
 namespace Homesite.App.Providers.DirectoryProvider
 {
-	public class DirectoryProvider
+	public class DirectoryProvider : IEnumerable<Module>
 	{
         [DataContract(Namespace = "urn:psget:v1.0")]
         public class PsGetProperties
@@ -15,15 +16,17 @@ namespace Homesite.App.Providers.DirectoryProvider
         }
 
 	    private readonly string _directoryUrl;
+        private readonly IList<Module> _modules;
 
         public DirectoryProvider(string directoryUrl = "https://raw.github.com/chaliy/psget/master/Directory.xml")
 	    {
 	        _directoryUrl = directoryUrl;
+            _modules = QueryModules(directoryUrl);
 	    }
 
-	    public IQueryable<Module> QueryModules()
+	    private static IList<Module> QueryModules(string url)
 		{
-            using (var reader = XmlReader.Create(_directoryUrl))
+            using (var reader = XmlReader.Create(url))
 			{
 				var feed = SyndicationFeed.Load(reader);
 
@@ -43,11 +46,11 @@ namespace Homesite.App.Providers.DirectoryProvider
                                                    ProjectUrl = properties.ProjectUrl
 					                           };
 					            })
-					.AsQueryable();				
+					.ToList();
 			}			
 		}
 
-	    private ModuleAuthor ResolveAuthor(SyndicationItem syndicationItem)
+	    private static ModuleAuthor ResolveAuthor(SyndicationItem syndicationItem)
 	    {
 	        if (syndicationItem.Authors.Count > 0)
 	        {
@@ -62,5 +65,20 @@ namespace Homesite.App.Providers.DirectoryProvider
 	        }
 	        return new ModuleAuthor();
 	    }
-	}
+
+        public Module FindById(string id)
+        {
+            return this.FirstOrDefault(x => x.Id.Equals(id, System.StringComparison.OrdinalIgnoreCase));
+        }
+
+        public IEnumerator<Module> GetEnumerator()
+        {
+            return _modules.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
+    }
 }

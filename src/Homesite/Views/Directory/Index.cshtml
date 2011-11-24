@@ -1,5 +1,4 @@
-﻿@using Homesite.Models.Directory
-@model IndexModel
+﻿@model IndexModel
 @{
     ViewBag.Title = "Directory Index";
 }
@@ -9,12 +8,12 @@
 <h1>Directory Index</h1>
 
 <dl>
-@foreach (var m in Model.Modules) { 
+@foreach (var m in Model.Modules.OrderBy(x => x.Id)) { 
 
-	<dt>@m.Id</dt>
+	<dt><a href="/directory/@m.Id/" title="@m.Title" >@m.Id</a></dt>
 	<dd>
 		<p>@m.Title</p>
-		<pre><code>@m.PsGetCommandLine</code></pre>
+		<pre>@m.PsGetCommandLine</pre>
         <ul>        
         @if (!String.IsNullOrWhiteSpace(m.ProjectUrl))
         {

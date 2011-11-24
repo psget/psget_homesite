@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Homesite.App.Providers.DirectoryProvider;
 
-namespace Homesite.Models.Directory
+namespace Homesite.Controllers.Directory
 {
 	public class IndexModel
 	{

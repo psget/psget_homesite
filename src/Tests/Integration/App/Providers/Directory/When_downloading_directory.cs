@@ -14,7 +14,7 @@ namespace Tests.Integration.App.Providers.Directory
         public void Given_downloaded_directory()
         {
             var provider = new DirectoryProvider();
-            _resultModules = provider.QueryModules().ToList();
+            _resultModules = provider.ToList();
         }
 
         [Test]

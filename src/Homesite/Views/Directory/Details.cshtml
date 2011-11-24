@@ -1,0 +1,34 @@
+﻿@model DetailsModel
+@{
+    ViewBag.Title = @Model.Module.Id;
+}
+
+<div class="container">
+
+<a href="/directory/">All modules</a>
+
+<h1>@Model.Module.Id</h1>
+
+<p>@Model.Module.Title</p>
+<pre class="prettyprint">@Model.Module.PsGetCommandLine</pre>
+<ul>
+@if (!String.IsNullOrWhiteSpace(@Model.Module.ProjectUrl))
+{
+    <li><a href="@Model.Module.ProjectUrl">Project Info</a></li>
+}            
+@if (!String.IsNullOrWhiteSpace(@Model.Module.Author.Name))
+{
+    if (!String.IsNullOrWhiteSpace(@Model.Module.Author.Uri))
+    {
+        <li>Author: <a href="@Model.Module.Author.Uri">@Model.Module.Author.Name</a></li>    
+    } 
+    else
+    {
+        <li>Author: @Model.Module.Author.Name</li>
+    }
+}
+@if (!String.IsNullOrWhiteSpace(@Model.Module.Author.Email))
+{
+    <li>Contact: <a href="@Model.Module.Author.Email">@Model.Module.Author.Email</a></li>
+}
+</ul>
