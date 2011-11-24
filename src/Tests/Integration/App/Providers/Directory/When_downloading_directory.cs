@@ -37,5 +37,12 @@ namespace Tests.Integration.App.Providers.Directory
             module.Author.Uri.Should().Equal("http://chaliy.name");
             module.Author.Email.Should().Equal("mike@chaliy.name");
         }
+
+        [Test]
+        public void Should_read_updated_information()
+        {
+            var module = _resultModules.First(x => x.Id == "PsGet");
+            module.Updated.Should().Be.InRange(System.DateTimeOffset.Now.AddYears(-2), System.DateTimeOffset.Now.AddYears(2));            
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿namespace Homesite.App.Providers.DirectoryProvider
+﻿using System;
+namespace Homesite.App.Providers.DirectoryProvider
 {
 	public class Module
 	{
@@ -7,7 +8,8 @@
 		public string Description { get; set; }
 		public string PsGetCommandLine { get; set; }
         public string ProjectUrl { get; set; }
-        public ModuleAuthor Author { get; set; }        
+        public ModuleAuthor Author { get; set; }
+        public DateTimeOffset Updated { get; set; }
 	}
 
 }

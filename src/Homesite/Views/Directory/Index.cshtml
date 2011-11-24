@@ -12,7 +12,10 @@
 
 	<dt><a href="/directory/@m.Id/" title="@m.Title" >@m.Id</a></dt>
 	<dd>
-		<p>@m.Title</p>
+        @if (@m.IsResent()){
+            <span class="label success">Recent!</span>
+        }
+        <p>@m.Title</p>
 		<pre>@m.PsGetCommandLine</pre>
         <ul>        
         @if (!String.IsNullOrWhiteSpace(m.ProjectUrl))

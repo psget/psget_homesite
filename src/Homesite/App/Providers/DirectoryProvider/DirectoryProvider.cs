@@ -43,7 +43,8 @@ namespace Homesite.App.Providers.DirectoryProvider
 					                               Title = x.Summary.Text,
 					                               PsGetCommandLine = "Install-Module " + x.Id,
 					                               Author = ResolveAuthor(x),
-                                                   ProjectUrl = properties.ProjectUrl
+                                                   ProjectUrl = properties.ProjectUrl,
+                                                   Updated = x.LastUpdatedTime
 					                           };
 					            })
 					.ToList();

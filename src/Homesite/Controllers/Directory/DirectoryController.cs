@@ -4,7 +4,7 @@ using Homesite.App.Providers.DirectoryProvider;
 
 namespace Homesite.Controllers.Directory
 {
-    [OutputCache(Duration = 60 * 60 /*60 minutes*/)]
+    //[OutputCache(Duration = 60 * 60 /*60 minutes*/)]
     public class DirectoryController : Controller
     {                        
         public ActionResult Index()
