@@ -76,7 +76,8 @@
     <Compile Include="App\Providers\DirectoryProvider\Module.cs" />
     <Compile Include="Controllers\Directory\DetailsModel.cs" />
     <Compile Include="Controllers\Directory\DirectoryController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\GetPsGet\GetPsGetController.cs" />
+    <Compile Include="Controllers\Home\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

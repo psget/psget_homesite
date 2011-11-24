@@ -17,18 +17,24 @@ namespace Homesite
 		public static void RegisterRoutes(RouteCollection routes)
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-			
-            routes.MapRoute(
-                "Default", // Route name
-                "{controller}/", // URL with parameters
-                new { controller = "Home", action = "Index" } // Parameter defaults
-            );
 
             routes.MapRoute(
-                "Details", // Route name
-                "{controller}/{id}/", // URL with parameters
-                new { controller = "Home", action = "Details" } // Parameter defaults
+                "GetPsGet",
+                "GetPsGet.ps1",
+                new { controller = "GetPsGet", action = "Index" } // Parameter defaults
             );
+            
+            routes.MapRoute(
+                "Details",
+                "{controller}/{id}/",
+                new { controller = "Home", action = "Details" } // Parameter defaults
+            );            
+			
+            routes.MapRoute(
+                "Default",
+                "{controller}/",
+                new { controller = "Home", action = "Index" } // Parameter defaults
+            );            
 
 		}
 
