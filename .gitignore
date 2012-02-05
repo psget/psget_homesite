@@ -9,3 +9,5 @@ _ReSharper.*
 *.resharper
 ~$*
 TestResult.xml
+*.VisualState.xml
+packages
