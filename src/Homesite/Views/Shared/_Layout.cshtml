@@ -8,16 +8,17 @@
 	<meta name="Description" content="Directory of the reusable PowerShell modules. We gather as much modules as we can. We provide way to install them easy with a single command." />
     @*<link rel="shortcut icon" href="favicon.ico">*@
 	@*<link rel="alternate" type="application/rss+xml" name="RSS" href="http://feeds.feedburner.com/psget" >*@
-    <link rel="stylesheet" href="//twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">    
+    <link rel="stylesheet" href="@Href("~/css/bootstrap.min.css")">
+    <link rel="stylesheet" href="@Href("~/css/bootstrap-responsive.min.css")">
 </head>
 
-<body style="padding-top: 40px;">
+<body>
 
-     <div class="topbar">
-      <div class="fill">
+     <div class="navbar">
+      <div class="navbar-inner">
         <div class="container">
-          <h3><a href="/">PsGet</a></h3>
-          <ul>
+          <a class="brand" href="/">PsGet</a>
+          <ul class="nav">
             <li><a href="/">Overview</a></li> @*class="active"*@
             <li><a href="/directory/">Directory</a></li>            
           </ul>
@@ -33,6 +34,7 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
     <script src="//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <script src="@Href("~/js/bootstrap.min.js")"></script>
     <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-28961030-1']);
