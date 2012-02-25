@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using Homesite.App.Providers.DirectoryProvider;
+using System.Web.Http;
 
 namespace Homesite
 {	
@@ -20,20 +21,26 @@ namespace Homesite
 
             routes.MapRoute(
                 "GetPsGet",
-                "GetPsGet.ps1",
-                new { controller = "GetPsGet", action = "Index" } // Parameter defaults
+                url: "GetPsGet.ps1",
+                defaults: new { controller = "GetPsGet", action = "Index" }
+            );
+
+            routes.MapHttpRoute(
+                "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
             );
             
             routes.MapRoute(
                 "Details",
-                "{controller}/{id}/",
-                new { controller = "Home", action = "Details" } // Parameter defaults
+                url: "{controller}/{id}/",
+                defaults: new { controller = "Home", action = "Details" }
             );            
 			
             routes.MapRoute(
                 "Default",
-                "{controller}/",
-                new { controller = "Home", action = "Index" } // Parameter defaults
+                url: "{controller}/",
+                defaults: new { controller = "Home", action = "Index" }
             );            
 
 		}

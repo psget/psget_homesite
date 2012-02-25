@@ -11,9 +11,9 @@ namespace Homesite.Controllers.Directory
         {
         	var provider = HomeApplication.Directory;
 			return View(new IndexModel
-							{
-                        		Modules = provider.ToList()
-                        	});
+			{
+                Modules = provider.ToList()
+            });
         }
         
         public ActionResult Details(string id)
