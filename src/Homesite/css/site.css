@@ -1,0 +1,6 @@
+footer { border-top:5px solid #76a34c;background:#222;color:#888;float:left;overflow:visible;padding:1em 0 1.5em; width:100%;text-align:center;}
+footer a{text-decoration:none}
+footer a:hover{color:#888;}
+footer h3{border-bottom:1px solid #888;color:#888;font-size:1.5em;margin:2em 0 0.25em}
+footer ul {list-style:none; padding:0}
+footer ul li{line-height: 2}
