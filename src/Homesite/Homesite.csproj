@@ -122,7 +122,7 @@
     <Compile Include="App\Providers\DirectoryProvider\ModuleAuthor.cs" />
     <Compile Include="App\Providers\DirectoryProvider\DirectoryProvider.cs" />
     <Compile Include="App\Providers\DirectoryProvider\Module.cs" />
-    <Compile Include="Controllers\Api\Directory\DirectoryApi.cs" />
+    <Compile Include="Controllers\Api\Modules\ModulesController.cs" />
     <Compile Include="Controllers\Directory\DetailsModel.cs" />
     <Compile Include="Controllers\Directory\DirectoryController.cs" />
     <Compile Include="Controllers\GetPsGet\GetPsGetController.cs" />
