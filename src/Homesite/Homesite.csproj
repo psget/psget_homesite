@@ -44,6 +44,9 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Elmah">
+      <HintPath>..\..\packages\elmah.corelibrary.1.2.1\lib\Elmah.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -122,6 +125,8 @@
     <Compile Include="App\Providers\DirectoryProvider\ModuleAuthor.cs" />
     <Compile Include="App\Providers\DirectoryProvider\DirectoryProvider.cs" />
     <Compile Include="App\Providers\DirectoryProvider\Module.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ElmahController.cs" />
     <Compile Include="Controllers\Api\Modules\ModulesController.cs" />
     <Compile Include="Controllers\Directory\DetailsModel.cs" />
     <Compile Include="Controllers\Directory\DirectoryController.cs" />
