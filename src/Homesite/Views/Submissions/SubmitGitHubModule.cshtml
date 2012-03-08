@@ -1,0 +1,73 @@
+﻿@model Homesite.Controllers.Submissions.SubmitGitHubModuleModel
+
+@{
+    ViewBag.Title = "Submit module from GitHub"; 
+    ViewBag.SitePart = "submissions";   
+}
+
+<div class="container">
+
+    <h1>Submit module from GitHub</h1>
+    
+    <div class="row">
+            
+        <form class="form-horizontal span8" action="/submissions/submitgithubmodule/" 
+              method="POST" autocomplete="true" >
+                        
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="alert alert-error">                                               
+                    @Html.ValidationSummary()
+                </div>
+            }
+
+            <fieldset>
+                <legend>Submission details</legend>
+                <div class="control-group">
+                    <label class="control-label" for="url">URL</label>
+                    <div class="controls">
+                        <input class="input-xlarge" name="url" type="url" value="@Model.URL">
+                        <p class="help-block">GitHub URL of the module (e.g. https://github.com/chaliy/psget/) </p>
+                    </div>
+                </div>             
+            </fieldset>
+        
+            <fieldset>
+                <legend>Contact details</legend>
+                <div class="control-group">
+                    <label class="control-label" for="contactName">Contact Name</label>
+                    <div class="controls">
+                        <input name="contactName" class="input-xlarge" type="text" value="@Model.ContactName" >
+                        <p class="help-block">Your name, PsGet needs it only for reference purposes. Author of the module will be retrieved from GitHub account.</p>
+                    </div>
+                </div>
+            
+              
+                <div class="control-group">
+                    <label class="control-label" for="contactEmail">Contact E-mail</label>
+                    <div class="controls">
+                        <input name="contactEmail" class="input-xlarge" type="email" value="@Model.ContactEmail">                                  
+                        <p class="help-block">E-mail address for submission feedback.</p>
+                    </div>
+                </div>
+            </fieldset>
+        
+            <div class="form-actions">                
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        </form>
+        
+        <sidebar class="span4">
+            <p><span class="label label-important">Note</span> For now we will store your contact information (including email address) in public way. If you want keep it private, it's probably better to use another submission process.</p>
+            <h3>What PsGet will do after submission:</h3>
+            <ul>
+                <li>Retrieve repository information with <a href="http://developer.github.com/v3/repos/">GitHub API</a></li>
+                <li>Obtain information about author from <a href="http://developer.github.com/v3/users/">GitHub</a></li>
+                <li>Queue submission <a href="/submissions/">for review</a></li>
+                <li>After short period of time it will appear in <a href="/directory/">module directory</a></li>
+            </ul>
+        </sidebar>
+        
+    </div>
+
+</div>

@@ -24,22 +24,22 @@ namespace Homesite
                 url: "GetPsGet.ps1",
                 defaults: new { controller = "GetPsGet", action = "Index" }
             );
-
+            
             routes.MapHttpRoute(
                 "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            
+
             routes.MapRoute(
-                "Details",
-                url: "{controller}/{id}/",
-                defaults: new { controller = "Home", action = "Details" }
+                "DirectoryModule",
+                url: "directory/{id}/",
+                defaults: new { controller = "Directory", action = "Details" }
             );
 			
             routes.MapRoute(
                 "Default",
-                url: "{controller}/",
+                url: "{controller}/{action}/",
                 defaults: new { controller = "Home", action = "Index" }
             );            
 

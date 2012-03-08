@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using Homesite.App.Providers.DirectoryProvider;
 
 namespace Homesite.Controllers.Directory
 {

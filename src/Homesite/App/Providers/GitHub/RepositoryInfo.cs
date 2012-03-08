@@ -51,5 +51,10 @@ namespace Homesite.App.Providers.GitHub
         /// </summary>
         [JsonProperty(PropertyName = "private")]
         public bool IsPrivate { get; set; }
+
+        public RepositoryInfo()
+        {
+            Owner = new UserInfo();
+        }
     }
 }

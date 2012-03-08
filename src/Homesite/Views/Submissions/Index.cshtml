@@ -1,0 +1,33 @@
+﻿@model Homesite.Controllers.Submissions.SubmissionsIndexModel
+
+@{
+    ViewBag.Title = "Submission Queue";
+    ViewBag.SitePart = "submissions";
+}
+
+<div class="container">
+
+    <h1>Submission Queue</h1>
+    
+    <div class="btn-toolbar">
+        <a class="btn" href="/submissions/submitgithubmodule/">Submit from GitHub</a>
+    </div>
+    
+    @if (Model.Submissions.Count == 0)
+    {
+        <p style="text-align: center">Seems there is no active submissions, you can <a href="/submissions/submitgithubmodule/">submit new module</a>.</p>
+    }
+    else
+    {
+       <dl>
+            @foreach (var s in Model.Submissions.OrderBy(x => x.Id))
+            { 
+                <dt>@s.Id</dt>
+                <dd>
+                    <pre class="prettyprint">@s.ToJson()</pre>                
+                </dd>
+            }
+        </dl>         
+    }
+              
+</div>

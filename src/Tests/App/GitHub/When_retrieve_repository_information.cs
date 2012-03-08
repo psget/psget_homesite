@@ -2,7 +2,7 @@
 using Homesite.App.Providers.GitHub;
 using Should.Fluent;
 
-namespace Tests.Integration.App.GitHub
+namespace Tests.App.GitHub
 {
     public class When_retrieve_repository_information
     {
@@ -12,7 +12,7 @@ namespace Tests.Integration.App.GitHub
         public void Given_one_of_my_repos()
         {
             var client = new GitHubClient();
-            _result = client.GetRepositoryInfo("https://github.com/chaliy/psget/").Result;
+            _result = client.GetRepositoryInfo("https://api.github.com/repos/chaliy/psget");
         }
 
         [Test]

@@ -62,7 +62,7 @@ namespace Homesite.Controllers.Api.Modules
         
         public void PostGitHubModule(GitHubModuleSumissionModel model)
         {
-            new SubmissionManager().SubmitGitHubModule(model.HomeUrl);
+            //new SubmissionManager().SubmitGitHubModule(model.HomeUrl);
         }
     }
 }

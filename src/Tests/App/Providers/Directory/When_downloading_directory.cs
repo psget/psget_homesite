@@ -4,7 +4,7 @@ using Homesite.App.Providers.DirectoryProvider;
 using NUnit.Framework;
 using Should.Fluent;
 
-namespace Tests.Integration.App.Providers.Directory
+namespace Tests.App.Providers.Directory
 {
     public class When_downloading_directory
     {

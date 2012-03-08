@@ -1,6 +1,7 @@
 ﻿@model DetailsModel
 @{
     ViewBag.Title = @Model.Module.Id;
+    ViewBag.SitePart = "directory";
 }
 
 <div class="container">
@@ -21,7 +22,7 @@
     if (!String.IsNullOrWhiteSpace(@Model.Module.Author.Uri))
     {
         <li>Author: <a href="@Model.Module.Author.Uri">@Model.Module.Author.Name</a></li>    
-    } 
+    }
     else
     {
         <li>Author: @Model.Module.Author.Name</li>
