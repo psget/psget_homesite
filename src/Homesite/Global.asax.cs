@@ -35,7 +35,7 @@ namespace Homesite
                 "Details",
                 url: "{controller}/{id}/",
                 defaults: new { controller = "Home", action = "Details" }
-            );            
+            );
 			
             routes.MapRoute(
                 "Default",

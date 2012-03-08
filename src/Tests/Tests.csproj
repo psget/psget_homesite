@@ -59,7 +59,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Integration\App\GitHub\When_retrieve_repository_information.cs" />
     <Compile Include="Integration\App\Providers\Directory\When_downloading_directory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Homesite\Homesite.csproj">

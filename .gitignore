@@ -11,3 +11,6 @@ _ReSharper.*
 TestResult.xml
 *.VisualState.xml
 packages
+*.ncrunchsolution
+*.crunchsolution.cache
+*.ncrunchproject
