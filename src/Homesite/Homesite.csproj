@@ -132,6 +132,7 @@
     <Compile Include="Controllers\Directory\DirectoryController.cs" />
     <Compile Include="Controllers\GetPsGet\GetPsGetController.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
+    <Compile Include="Fx\GoogleAnalitics.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
