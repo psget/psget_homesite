@@ -18,7 +18,7 @@ namespace Homesite.App.Providers.DirectoryProvider
 	    private readonly string _directoryUrl;
         private readonly IList<Module> _modules;
 
-        public DirectoryProvider(string directoryUrl = "https://raw.github.com/chaliy/psget/master/Directory.xml")
+        public DirectoryProvider(string directoryUrl = "https://raw.github.com/psget/psget/master/Directory.xml")
 	    {
 	        _directoryUrl = directoryUrl;
             _modules = QueryModules(directoryUrl);
