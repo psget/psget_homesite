@@ -12,5 +12,10 @@ namespace Tests
         {
             return new SubmissionManager(StorageClient, GitHubClient);
         }
+
+        public SubmissionGitHubGrabber CreateSubmissionGitHubGrabber()
+        {
+            return new SubmissionGitHubGrabber(GitHubClient);
+        }
     }
 }

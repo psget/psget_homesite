@@ -26,7 +26,7 @@ namespace Tests.App.Providers.Directory
         [Test]
         public void Should_serialize_psget_properties()
         {
-            _resultModules.First(x => x.Id == "PsGet").ProjectUrl.Should().Equal("https://github.com/chaliy/psget/");
+            _resultModules.First(x => x.Id == "PsGet").ProjectUrl.Should().Equal("https://github.com/psget/psget/");
         }
 
         [Test]

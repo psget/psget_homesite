@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Net;
+using Ionic.Zip;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -18,6 +21,26 @@ namespace Homesite.App.Providers.GitHub
             }
             
             return Get<RepositoryInfo>(repoUrl);
+        }
+
+        public UserInfo GetUserInfo(string userUrl)
+        {
+            if (!userUrl.StartsWith("https://api.github.com/users/"))
+            {
+                throw new ArgumentException("You should provide GitHub home URL something like: https://api.github.com/users/chaliy/", "userUrl");
+            }
+
+            return Get<UserInfo>(userUrl);
+        }
+
+        public ReadOnlyCollection<string> GetRepositoryFileNames(string repoHtmlUrl)
+        {
+            var downloadUrl = repoHtmlUrl + "/zipball/master";
+            var downloadedData = new WebClient().DownloadData(downloadUrl);
+            using (var zip = ZipFile.Read(new MemoryStream(downloadedData)))
+            {
+                return zip.EntryFileNames.ToList().AsReadOnly();
+            }
         }
 
         private static T Get<T>(string url) where T : class 

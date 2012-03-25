@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Web.Mvc;
 using Homesite.App.Providers.Sumission;
 using System;
@@ -14,7 +14,7 @@ namespace Homesite.Controllers.Submissions
         {
             return View(new SubmissionsIndexModel
             {
-                Submissions = _manager.QeurySubmissions()
+                Submissions = _manager.QuerySubmissions()
             });
         }
 
@@ -31,46 +31,66 @@ namespace Homesite.Controllers.Submissions
             if (ModelState.IsValid)
             {
                 var feedback = new List<string>();
-                if (!_manager.SubmitGitHubModule(model.URL, model.ContactName, model.ContactEmail, feedback))
+                //if (!_manager.SubmitGitHubModule(model.URL, model.ContactName, model.ContactEmail, feedback))
+                //{
+                //    foreach (var item in feedback)
+                //    {
+                //        ModelState.AddModelError(String.Empty, item);
+                //    }
+                //}
+                //else
+                //{
+                //    return RedirectToAction("Index");
+                //}
+            }            
+            return View(model);
+        }
+
+        public ActionResult SubmitModule()
+        {
+            return View(new SubmitModuleModel
+            {
+            });
+        }
+
+        [HttpPost]
+        public ActionResult SubmitModule(SubmitModuleModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var feedback = new List<string>();
+                var candidate = new SubmissionCandidate
+                {
+                    Title = model.Title,
+                    Description = model.Description,
+                    ProjectUrl = model.ProjectUrl,
+                    ModuleID = model.ModuleID,
+                    Content = new Content
+                    {
+                        Source = model.URL,
+                        Type = model.Type
+                    },
+                    Author = new Contact
+                    {
+                        Name = model.AuthorName,
+                        Email = model.AuthorEmail,
+                        Uri = model.AuthorUrl
+                    }
+                };
+
+                if (!_manager.SubmitModule(candidate, model.ContactName, model.ContactEmail, feedback))
                 {
                     foreach (var item in feedback)
                     {
                         ModelState.AddModelError(String.Empty, item);
                     }
-                }   
-            }            
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
+            }
             return View(model);
-        }
-    }
-
-    public class SubmitGitHubModuleModel
-    {
-        [Required]        
-        public string URL { get; set; }
-
-        [Required]
-        [Display(Name = "Contact Name")]
-        public string ContactName { get; set; }
-
-        [Required]
-        [Display(Name = "Contact E-mail")]
-        public string ContactEmail { get; set; }
-
-        public List<string> Feedback { get; set; }
-
-        public SubmitGitHubModuleModel()
-        {
-            Feedback = new List<string>();
-        }
-    }
-
-    public class SubmissionsIndexModel
-    {
-        public IList<SubmissionDoc> Submissions { get; set; }
-
-        public SubmissionsIndexModel()
-        {
-            Submissions = new List<SubmissionDoc>();
         }
     }
 }

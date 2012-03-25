@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace Homesite.App.Providers.GitHub
 {
-    public class UserInfo
+    public class UserRefInfo
     {
         /// <summary>
         /// "login": "octocat",
@@ -33,36 +33,5 @@ namespace Homesite.App.Providers.GitHub
         /// </summary>
         [JsonProperty(PropertyName = "url")]
         public string Url { get; set; }
-
-        /// <summary>
-        /// "name": "monalisa octocat"
-        /// </summary>
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-
-        /// <summary>
-        /// "company": "GitHub"
-        /// </summary>
-        [JsonProperty(PropertyName = "company")]
-        public string Company { get; set; }
-
-        /// <summary>
-        /// "blog": "https://github.com/blog"
-        /// </summary>
-        [JsonProperty(PropertyName = "blog")]
-        public string Blog { get; set; }
-
-        /// <summary>
-        /// "location": "San Francisco"
-        /// </summary>
-        [JsonProperty(PropertyName = "location")]
-        public string Location { get; set; }
-
-        /// <summary>
-        /// "email": "octocat@github.com"
-        /// </summary>
-        [JsonProperty(PropertyName = "email")]
-        public string Email { get; set; }
     }
 }

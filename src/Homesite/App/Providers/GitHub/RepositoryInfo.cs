@@ -26,7 +26,7 @@ namespace Homesite.App.Providers.GitHub
         /// },
         /// </summary>
         [JsonProperty(PropertyName = "owner")]
-        public UserInfo Owner { get; set; }  
+        public UserRefInfo Owner { get; set; }  
 
         /// <summary>
         /// "name": "Hello-World",
@@ -54,7 +54,7 @@ namespace Homesite.App.Providers.GitHub
 
         public RepositoryInfo()
         {
-            Owner = new UserInfo();
+            Owner = new UserRefInfo();
         }
     }
 }

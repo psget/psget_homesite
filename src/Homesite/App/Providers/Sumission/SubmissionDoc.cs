@@ -8,6 +8,8 @@ namespace Homesite.App.Providers.Sumission
 
         public Contact Contact { get; set; }
         public SubmissionCandidate Candidate { get; set; }
+        public string Status { get; set; }
+        public string Feedback { get; set; }
 
         public SubmissionDoc()
         {

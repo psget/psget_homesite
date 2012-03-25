@@ -60,6 +60,9 @@
     <Reference Include="Glimpse.Core">
       <HintPath>..\..\packages\Glimpse.0.87\lib\net40\Glimpse.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\..\packages\DotNetZip.1.9.1.8\lib\net20\Ionic.Zip.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -160,14 +163,16 @@
     <Compile Include="App\Providers\DirectoryProvider\ModuleAuthor.cs" />
     <Compile Include="App\Providers\DirectoryProvider\DirectoryProvider.cs" />
     <Compile Include="App\Providers\DirectoryProvider\Module.cs" />
+    <Compile Include="App\Providers\GitHub\UserInfo.cs" />
     <Compile Include="App\Providers\GitHub\GitHubClient.cs" />
     <Compile Include="App\Providers\GitHub\IGitHubClient.cs" />
     <Compile Include="App\Providers\GitHub\RepositoryInfo.cs" />
-    <Compile Include="App\Providers\GitHub\UserInfo.cs" />
+    <Compile Include="App\Providers\GitHub\UserRefInfo.cs" />
     <Compile Include="App\Providers\Storage\IStorageClient.cs" />
     <Compile Include="App\Providers\Storage\StorageClient.cs" />
     <Compile Include="App\Providers\Sumission\Contact.cs" />
     <Compile Include="App\Providers\Sumission\Content.cs" />
+    <Compile Include="App\Providers\Sumission\SubmissionGitHubGrabber.cs" />
     <Compile Include="App\Providers\Sumission\SubmissionCandidate.cs" />
     <Compile Include="App\Providers\Sumission\SubmissionDoc.cs" />
     <Compile Include="App\Providers\Sumission\SubmissionManager.cs" />
@@ -178,7 +183,10 @@
     <Compile Include="Controllers\Directory\DirectoryController.cs" />
     <Compile Include="Controllers\GetPsGet\GetPsGetController.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
+    <Compile Include="Controllers\Submissions\SubmitModuleModel.cs" />
     <Compile Include="Controllers\Submissions\SubmissionsController.cs" />
+    <Compile Include="Controllers\Submissions\SubmissionsIndexModel.cs" />
+    <Compile Include="Controllers\Submissions\SubmitGitHubModuleModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -260,6 +268,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Submissions\SubmitGitHubModule.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Submissions\SubmitModule.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

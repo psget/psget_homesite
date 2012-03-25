@@ -62,7 +62,7 @@
     <Compile Include="App\GitHub\When_retrieve_repository_information.cs" />
     <Compile Include="App\GitHub\When_retrieve_repository_information_repo_not_exitis.cs" />
     <Compile Include="App\Providers\Directory\When_downloading_directory.cs" />
-    <Compile Include="App\Sumission\When_submit_from_github_url.cs" />
+    <Compile Include="App\Sumission\When_grab_info_from_github_url.cs" />
     <Compile Include="Stubs\StubGitHubClient.cs" />
     <Compile Include="Stubs\StubStorageClient.cs" />
     <Compile Include="TestEnv.cs" />
