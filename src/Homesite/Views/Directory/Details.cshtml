@@ -30,6 +30,6 @@
 }
 @if (!String.IsNullOrWhiteSpace(@Model.Module.Author.Email))
 {
-    <li>Contact: <a href="@Model.Module.Author.Email">@Model.Module.Author.Email</a></li>
+    <li>Contact: <a href="mailto:@Model.Module.Author.Email">@Model.Module.Author.Email</a></li>
 }
 </ul>
