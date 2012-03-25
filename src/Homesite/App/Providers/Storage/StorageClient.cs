@@ -12,9 +12,8 @@ namespace Homesite.App.Providers.Storage
         readonly Lazy<DocumentStore> _docStore = new Lazy<DocumentStore>(() =>
         {
             var documentStore = new DocumentStore();
-
-            documentStore.ParseConnectionString(ConfigurationManager.AppSettings["RAVENHQ_CONNECTION_STRING"]);
-            //var documentStore = new DocumentStore { ConnectionString = "RAVENHQ_CONNECTION_STRING" };
+            var connectionString = ConfigurationManager.AppSettings["RAVENHQ_CONNECTION_STRING"];
+            documentStore.ParseConnectionString(connectionString);
             documentStore.Initialize();
             return documentStore;
         }, LazyThreadSafetyMode.PublicationOnly);
@@ -35,10 +34,19 @@ namespace Homesite.App.Providers.Storage
 
         public IList<T> Query<T>()
         {
-            using (var session = DocStore.OpenSession())
+            try
             {
-                return session.Query<T>().ToList();                
+                using (var session = DocStore.OpenSession())
+                {
+                    return session.Query<T>().ToList();
+                }
             }
+            // In case of There is no index named: dynamic/SubmissionDocs 
+            // let's return empty collection... Stupid situation.
+            catch (InvalidOperationException)
+            {                
+                return new List<T>();
+            }            
         }
     }
 }
