@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading;
 using Raven.Client.Document;
@@ -10,7 +11,10 @@ namespace Homesite.App.Providers.Storage
     {
         readonly Lazy<DocumentStore> _docStore = new Lazy<DocumentStore>(() =>
         {
-            var documentStore = new DocumentStore { ConnectionStringName = "RAVENHQ_CONNECTION_STRING" };
+            var documentStore = new DocumentStore();
+
+            documentStore.ParseConnectionString(ConfigurationManager.AppSettings["RAVENHQ_CONNECTION_STRING"]);
+            //var documentStore = new DocumentStore { ConnectionString = "RAVENHQ_CONNECTION_STRING" };
             documentStore.Initialize();
             return documentStore;
         }, LazyThreadSafetyMode.PublicationOnly);
@@ -19,7 +23,7 @@ namespace Homesite.App.Providers.Storage
         {
             get { return _docStore.Value; }
         }
-
+        
         public void Store(object doc)
         {
             using(var session = DocStore.OpenSession())
