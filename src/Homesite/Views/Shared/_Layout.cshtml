@@ -3,94 +3,97 @@
 <head>
     <meta charset="utf-8">
     <title>PsGet - PowerShell Modules Directory - @ViewBag.Title</title>
-	<meta name="Language" content="English" >
-	<meta name="Author" content="Mike Chaliy">
-	<meta name="Description" content="Directory of the reusable PowerShell modules. We gather as much modules as we can. We provide way to install them easy with a single command." />
-    @*<link rel="shortcut icon" href="favicon.ico">*@
-	@*<link rel="alternate" type="application/rss+xml" name="RSS" href="http://feeds.feedburner.com/psget" >*@
-    <link rel="stylesheet" href="@Href("~/css/bootstrap.min.css")">
-    <link rel="stylesheet" href="@Href("~/css/bootstrap-responsive.min.css")">
+    <meta name="Language" content="English">
+    <meta name="Author" content="Mike Chaliy">
+    <meta name="Description" content="Directory of the reusable PowerShell modules. We gather as much modules as we can. We provide way to install them easy with a single command." />
+    @*<link rel="shortcut icon" href="favicon.ico">*@ @*<link rel="alternate" type="application/rss+xml" name="RSS" href="http://feeds.feedburner.com/psget" >*@
+    <link rel="stylesheet" href="@Href("~/content/bootstrap.min.css")">
+    <link rel="stylesheet" href="@Href("~/content/bootstrap-responsive.min.css")">
+    <link rel="stylesheet" href="@Href("~/content/prettify/prettify.css")">
     <link rel="stylesheet" href="@Href("~/css/site.css")">
 </head>
-
 <body>
-
-     <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="brand" href="/">PsGet</a>
-          <ul class="nav">
-            <li><a href="/">Overview</a></li> @*class="active"*@
-            <li><a href="/directory/">Directory</a></li>            
-          </ul>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="/">PsGet</a>
+                <ul class="nav">
+                    <li class='@Html.ActivePart("home")'><a href="/">Overview</a></li>
+                    <li class='@Html.ActivePart("directory")'><a href="/directory/">Directory</a></li>
+                    <li class='@Html.ActivePart("submissions")'><a href="/submissions/">Submissions</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
     </div>
-
     <div class="container">
-        <p><br/><em>Search and install PowerShell modules easy.</em></p>
+        <p>
+            <br />
+            <em>Search and install PowerShell modules easy.</em></p>
     </div>
-    
     @RenderBody()
-
     <footer class="container">
         <div class="row">
-        <div class="span6">
-           <p>
-                <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
-                    <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" />
-                </a>
-                <br />
-                This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://chaliy.name" property="cc:attributionName" rel="cc:attributionURL">Mike Chaliy</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.                
-          </p>
-          <p>Each package is licensed to you by its owner. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.</p>
-          <p>Hosting provided by</p>          
-          <p>            
-            <a href="https://appharbor.com/" title="Powered by AppHarbor">
-                <img src="http://appharbor.com/assets/images/appharbor.png" alt="Powered by AppHarbor" />
-            </a>
-            </p>
+            <div class="span6">
+                <p>
+                    <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+                        <img alt="Creative Commons License" style="border-width: 0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" />
+                    </a>
+                    <br />
+                    This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text"
+                        rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://chaliy.name"
+                            property="cc:attributionName" rel="cc:attributionURL">Mike Chaliy</a> is
+                    licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+                        Creative Commons Attribution 3.0 Unported License</a>.
+                </p>
+                <p>
+                    Each package is licensed to you by its owner. PsGet is not responsible for,
+                    nor does it grant any licenses to, third-party packages.</p>
+                <p>
+                    Hosting provided by</p>
+                <p>
+                    <a href="https://appharbor.com/" title="Powered by AppHarbor">
+                        <img src="http://appharbor.com/assets/images/appharbor.png" alt="Powered by AppHarbor" />
+                    </a>
+                </p>
+            </div>
+            <div class="span6">
+                <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+                <script>
+                    new TWTR.Widget({
+                        version: 2,
+                        type: 'search',
+                        search: 'psget',
+                        interval: 30000,
+                        subject: '',
+                        width: 'auto',
+                        height: 150,
+                        theme: {
+                            shell: {
+                                background: '#333333',
+                                color: '#ffffff'
+                            },
+                            tweets: {
+                                background: '#ffffff',
+                                color: '#444444',
+                                links: '#0088cc'
+                            }
+                        },
+                        features: {
+                            scrollbar: false,
+                            loop: true,
+                            live: false,
+                            behavior: 'default'
+                        }
+                    }).render().start();
+                </script>
+            </div>
+            <div class="span6">
+            </div>
         </div>
-        <div class="span6">
-        <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
-        <script>
-            new TWTR.Widget({
-                version: 2,
-                type: 'search',
-                search: 'psget',
-                interval: 30000,                
-                subject: '',
-                width: 'auto',
-                height: 150,
-                theme: {
-                    shell: {
-                        background: '#333333',
-                        color: '#ffffff'
-                    },
-                    tweets: {
-                        background: '#ffffff',
-                        color: '#444444',
-                        links: '#0088cc'
-                    }
-                },
-                features: {
-                    scrollbar: false,
-                    loop: true,
-                    live: false,
-                    behavior: 'default'
-                }
-            }).render().start();
-        </script>
-        </div>
-        <div class="span6">            
-            
-        </div>
-    </div>  
-    </footer>
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-    <script src="//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
-    <script src="@Href("~/js/bootstrap.min.js")"></script>
+    </footer>    
+    <script src="@Href("~/scripts/jquery-1.7.1.min.js")"></script>
+    <script src="@Href("~/scripts/bootstrap.min.js")"></script>
+    <script src="@Href("~/scripts/prettify/prettify.js")"></script>
     <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-28961030-1']);
@@ -101,6 +104,12 @@
             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            // make code pretty
+            window.prettyPrint && prettyPrint();
+        });        
     </script>
 </body>
 </html>

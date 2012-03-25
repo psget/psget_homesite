@@ -1,0 +1,66 @@
+﻿@model Homesite.Controllers.Submissions.SubmissionsIndexModel
+
+@{
+    ViewBag.Title = "Submission Queue";
+    ViewBag.SitePart = "submissions";
+}
+
+<div class="container">
+
+    <h1>Submission Queue</h1>
+    
+    <div class="btn-toolbar">
+        <a class="btn" href="/submissions/submitmodule/">Submit module</a>
+        @*<a class="btn" href="/submissions/submitgithubmodule/">Submit GitHub module</a> *@       
+    </div>
+    
+    @if (Model.Submissions.Count == 0)
+    {
+        <p style="text-align: center">Seems there is no active submissions, you can <a href="/submissions/submitmodule/">submit new module</a>.</p>
+    }
+    else
+    {
+       <dl>
+            @foreach (var s in Model.Submissions.OrderByDescending(x => x.Id))
+            { 
+                <dt>Submission # @s.Id.Replace("SubmissionDocs/", "")</dt>
+                <dd class="well">
+                    @switch (s.Status)
+                    {
+                        case null:
+                        case "":
+                        case "Pending":
+                            <div class="alert">
+                                <h4 class="alert-heading">Pending</h4>
+                                Submission is ready for review. Moderator notified about this submission.
+                                <p>@s.Feedback</p>
+                            </div>
+                            break;
+                        case "Completed":
+                            <div class="alert alert-success">
+                                <h4 class="alert-heading">Well done!</h4>
+                                This module is posted to the directory.
+                                <p>@s.Feedback</p>
+                            </div>
+                            break;
+                      case "Canceled":
+                            <div class="alert alert-success">
+                                <h4 class="alert-heading">Oh snap!</h4>
+                                This module is canceled from posting to the directory.
+                                <p>@s.Feedback</p>
+                            </div>
+                            break;
+                    }
+                    <div class="well">
+                        <h4>Module details</h4>
+                        <p>ID: <b>@s.Candidate.ModuleID</b></p>
+                        <p>Title: @s.Candidate.Title</p>
+                        <p>Description: @s.Candidate.Description</p>
+                        <p>Project URL: <a href="@s.Candidate.ProjectUrl">@s.Candidate.ProjectUrl</a></p>
+                    </div>
+                </dd>
+            }
+        </dl>         
+    }
+              
+</div>

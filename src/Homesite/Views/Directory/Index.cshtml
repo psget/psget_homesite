@@ -1,6 +1,7 @@
 ﻿@model IndexModel
 @{
     ViewBag.Title = "Directory Index";
+    ViewBag.SitePart = "directory";
 }
 
 <div class="container">
@@ -8,11 +9,13 @@
 <h1>Directory Index</h1>
 
 <dl>
-@foreach (var m in Model.Modules.OrderBy(x => x.Id)) { 
+@foreach (var m in Model.Modules.OrderBy(x => x.Id))
+{ 
 
 	<dt><a href="/directory/@m.Id/" title="@m.Title" >@m.Id</a></dt>
 	<dd>
-        @if (@m.IsResent()){
+        @if (@m.IsResent())
+        {
             <span class="label success">Recent!</span>
         }
         <p>@m.Title</p>
@@ -27,7 +30,7 @@
             if (!String.IsNullOrWhiteSpace(m.Author.Uri))
             {
                 <li>Author: <a href="@m.Author.Uri">@m.Author.Name</a></li>    
-            } 
+            }
             else
             {
                 <li>Author: @m.Author.Name</li>
