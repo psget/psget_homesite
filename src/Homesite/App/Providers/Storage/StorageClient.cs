@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Threading;
+using Raven.Abstractions.Data;
 using Raven.Client.Document;
 
 namespace Homesite.App.Providers.Storage
@@ -10,11 +11,20 @@ namespace Homesite.App.Providers.Storage
     public class StorageClient : IStorageClient
     {
         readonly Lazy<DocumentStore> _docStore = new Lazy<DocumentStore>(() =>
-        {
-            var documentStore = new DocumentStore();
+        {            
             var connectionString = ConfigurationManager.AppSettings["RAVENHQ_CONNECTION_STRING"];
+            var parser = ConnectionStringParser<RavenConnectionStringOptions>
+                .FromConnectionString(connectionString);
+            parser.Parse();
+
+            var documentStore = new DocumentStore
+            {
+                ApiKey = parser.ConnectionStringOptions.ApiKey,
+                Url = parser.ConnectionStringOptions.Url,
+            };
+
             documentStore.ParseConnectionString(connectionString);
-            documentStore.Initialize();
+            documentStore.Initialize();            
             return documentStore;
         }, LazyThreadSafetyMode.PublicationOnly);
         
