@@ -4,7 +4,7 @@ using Homesite.App.Providers.Sumission;
 using NUnit.Framework;
 using Should.Fluent;
 
-namespace Tests.App.Sumission
+namespace Tests.App.Submission
 {
     public class When_grab_info_from_github_url
     {

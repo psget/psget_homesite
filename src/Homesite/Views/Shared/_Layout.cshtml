@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -20,7 +20,7 @@
                 <ul class="nav">
                     <li class='@Html.ActivePart("home")'><a href="/">Overview</a></li>
                     <li class='@Html.ActivePart("directory")'><a href="/directory/">Directory</a></li>
-                    <li class='@Html.ActivePart("submissions")'><a href="/submissions/">Submissions</a></li>
+                    @*<li class='@Html.ActivePart("submissions")'><a href="/submissions/">Submissions</a></li>*@
                 </ul>
             </div>
         </div>
@@ -91,7 +91,7 @@
             </div>
         </div>
     </footer>    
-    <script src="@Href("~/scripts/jquery-1.7.1.min.js")"></script>
+    <script src="@Href("~/scripts/jquery-1.9.1.min.js")"></script>
     <script src="@Href("~/scripts/bootstrap.min.js")"></script>
     <script src="@Href("~/scripts/prettify/prettify.js")"></script>
     <script type="text/javascript">
