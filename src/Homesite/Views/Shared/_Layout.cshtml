@@ -6,17 +6,21 @@
     <meta name="Language" content="English">
     <meta name="Author" content="Mike Chaliy">
     <meta name="Description" content="Directory of the reusable PowerShell modules. We gather as much modules as we can. We provide way to install them easy with a single command." />
-    @*<link rel="shortcut icon" href="favicon.ico">*@ @*<link rel="alternate" type="application/rss+xml" name="RSS" href="http://feeds.feedburner.com/psget" >*@
-    <link rel="stylesheet" href="@Href("~/content/bootstrap.min.css")">
-    <link rel="stylesheet" href="@Href("~/content/bootstrap-responsive.min.css")">
-    <link rel="stylesheet" href="@Href("~/content/prettify/prettify.css")">
-    <link rel="stylesheet" href="@Href("~/css/site.css")">
+    <link rel="shortcut icon" href="~/favicon.ico">
+     @*<link rel="alternate" type="application/rss+xml" name="RSS" href="http://feeds.feedburner.com/psget" >*@
+    <link rel="stylesheet" href="~/content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/content/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="~/content/prettify/prettify.css">
+    <link rel="stylesheet" href="~/css/site.css">
 </head>
 <body>
     <div class="navbar">
         <div class="navbar-inner">
             <div class="container">
-                <a class="brand" href="/">PsGet</a>
+                <a class="brand" href="/">
+                    <img src="~/img/logo_20x20.png"/>
+                    PsGet
+                </a>
                 <ul class="nav">
                     <li class='@Html.ActivePart("home")'><a href="/">Overview</a></li>
                     <li class='@Html.ActivePart("directory")'><a href="/directory/">Directory</a></li>
@@ -91,9 +95,9 @@
             </div>
         </div>
     </footer>    
-    <script src="@Href("~/scripts/jquery-1.9.1.min.js")"></script>
-    <script src="@Href("~/scripts/bootstrap.min.js")"></script>
-    <script src="@Href("~/scripts/prettify/prettify.js")"></script>
+    <script src="~/scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/prettify/prettify.js"></script>
     <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-28961030-1']);
