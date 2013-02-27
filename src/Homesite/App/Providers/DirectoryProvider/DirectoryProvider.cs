@@ -14,7 +14,7 @@ namespace Homesite.App.Providers.DirectoryProvider
             [DataMember]
             public string ProjectUrl { get; set; }
 
-            [DataMember]
+            [DataMember(Order = 1)]
             public string MinPowerShellVersion { get; set; }
         }
 

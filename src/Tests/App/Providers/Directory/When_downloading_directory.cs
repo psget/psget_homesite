@@ -39,6 +39,14 @@ namespace Tests.App.Providers.Directory
         }
 
         [Test]
+        public void Should_read_version_information()
+        {
+            var module = _resultModules.First(x => x.Id == "ps-git-ignores");
+            module.MinPowerShellVersion.Should().Not.Be.Empty();
+            module.MinPowerShellVersion.Should().Not.Equal("N/A");
+        }
+
+        [Test]
         public void Should_read_updated_information()
         {
             var module = _resultModules.First(x => x.Id == "PsGet");
