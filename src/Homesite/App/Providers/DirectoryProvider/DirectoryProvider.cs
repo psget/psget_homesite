@@ -13,6 +13,9 @@ namespace Homesite.App.Providers.DirectoryProvider
         {
             [DataMember]
             public string ProjectUrl { get; set; }
+
+            [DataMember]
+            public string MinPowerShellVersion { get; set; }
         }
 
 	    private readonly string _directoryUrl;
@@ -30,24 +33,27 @@ namespace Homesite.App.Providers.DirectoryProvider
 			{
 				var feed = SyndicationFeed.Load(reader);
 
-				return feed.Items
-					.Select(x =>
-					            {
-					                var properties = x.ElementExtensions
-                                        .ReadElementExtensions<PsGetProperties>("properties", "urn:psget:v1.0")
-                                        .FirstOrDefault() ?? new PsGetProperties();
+			    return feed.Items
+			               .Select(x =>
+			                   {
+			                       var properties = x.ElementExtensions
+			                                         .ReadElementExtensions<PsGetProperties>("properties", "urn:psget:v1.0")
+			                                         .FirstOrDefault() ?? new PsGetProperties();
 
-					                return new Module
-					                           {
-					                               Id = x.Id,
-					                               Title = x.Summary.Text,
-					                               PsGetCommandLine = "Install-Module " + x.Id,
-					                               Author = ResolveAuthor(x),
-                                                   ProjectUrl = properties.ProjectUrl,
-                                                   Updated = x.LastUpdatedTime
-					                           };
-					            })
-					.ToList();
+			                       return new Module
+			                       {
+			                           Id = x.Id,
+			                           Title = x.Title.Text,
+			                           Description = x.Summary.Text,
+			                           PsGetCommandLine = "Install-Module " + x.Id,
+			                           Author = ResolveAuthor(x),
+			                           ProjectUrl = properties.ProjectUrl,
+			                           MinPowerShellVersion = properties.MinPowerShellVersion ?? "1.0",
+			                           Updated = x.LastUpdatedTime
+			                       };
+			                   })
+			               .OrderBy(x => x.Title)
+			               .ToList();
 			}			
 		}
 
