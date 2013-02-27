@@ -10,6 +10,7 @@ namespace Homesite.App.Providers.DirectoryProvider
         public string ProjectUrl { get; set; }
         public ModuleAuthor Author { get; set; }
         public DateTimeOffset Updated { get; set; }
+        public string MinPowerShellVersion { get; set; }
 	}
 
 }
