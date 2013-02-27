@@ -48,7 +48,7 @@ namespace Homesite.App.Providers.DirectoryProvider
 			                           PsGetCommandLine = "Install-Module " + x.Id,
 			                           Author = ResolveAuthor(x),
 			                           ProjectUrl = properties.ProjectUrl,
-			                           MinPowerShellVersion = properties.MinPowerShellVersion ?? "1.0",
+			                           MinPowerShellVersion = properties.MinPowerShellVersion ?? "N/A",
 			                           Updated = x.LastUpdatedTime
 			                       };
 			                   })
