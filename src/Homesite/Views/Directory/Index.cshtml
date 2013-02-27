@@ -9,38 +9,39 @@
 <h1>Directory Index</h1>
 
 <dl>
-@foreach (var m in Model.Modules.OrderBy(x => x.Id))
-{ 
-
-	<dt><a href="/directory/@m.Id/" title="@m.Title" >@m.Id</a></dt>
+@foreach (var m in Model.Modules)
+{
+	<dt><a href="/directory/@m.Id/" title="@m.Title" >@m.Title</a></dt>
 	<dd>
         @if (@m.IsResent())
         {
             <span class="label success">Recent!</span>
         }
-        <p>@m.Title</p>
+        <p>@m.Description</p>
 		<pre>@m.PsGetCommandLine</pre>
-        <ul>        
-        @if (!String.IsNullOrWhiteSpace(m.ProjectUrl))
-        {
-            <li><a href="@m.ProjectUrl">Project Info</a></li>
-        }            
-        @if (!String.IsNullOrWhiteSpace(m.Author.Name))
-        {
-            if (!String.IsNullOrWhiteSpace(m.Author.Uri))
-            {
-                <li>Author: <a href="@m.Author.Uri">@m.Author.Name</a></li>    
-            }
-            else
-            {
-                <li>Author: @m.Author.Name</li>
-            }
-        }
-        @if (!String.IsNullOrWhiteSpace(m.Author.Email))
-        {
-            <li>Contact: <a href="mailto:@m.Author.Email">@m.Author.Email</a></li>
-        }
-        </ul>
+	    <ul>
+	        @if (!String.IsNullOrWhiteSpace(m.ProjectUrl))
+	        {
+	            <li><a href="@m.ProjectUrl">Project Info</a></li>
+	        }            
+	        @if (!String.IsNullOrWhiteSpace(m.Author.Name))
+	        {
+	            if (!String.IsNullOrWhiteSpace(m.Author.Uri))
+	            {
+	                <li>Author: <a href="@m.Author.Uri">@m.Author.Name</a></li>    
+	            }
+	            else
+	            {
+	                <li>Author: @m.Author.Name</li>
+	            }
+	        }
+	        @if (!String.IsNullOrWhiteSpace(m.Author.Email))
+	        {
+	            <li>Contact: <a href="mailto:@m.Author.Email">@m.Author.Email</a></li>
+	        }
+	        <li>PowerShell version: <span class="badge badge-success">@m.MinPowerShellVersion</span></li>
+	    </ul>
+        <br/>
 	</dd>
 }
 </dl>
