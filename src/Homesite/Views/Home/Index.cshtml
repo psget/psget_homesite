@@ -15,6 +15,11 @@
 
 <pre><code>(new-object Net.WebClient).DownloadString("http://psget.net/GetPsGet.ps1") | iex</code></pre>
 
+<p>And if you get something like this:</p>
+
+<pre><code>Downloading PsGet from https://github.com/psget/psget/raw/master/PsGet/PsGet.psm1</code></pre>
+<pre><code>PsGet is installed and ready to use</code></pre>
+
 <p>You are done. This nice line of PowerShell script will download <code>GetPsGet.ps1</code> and send it to <code>Invoke-Expression</code> to install PsGet Module.</p>
 
 <p>Alternatively you can do installation manually</p>
